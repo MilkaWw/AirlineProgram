@@ -1,0 +1,96 @@
+﻿<Page x:Name="page"
+      x:Class="AirlineProgram.View.Pages.PageBuyTickets"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:fa ="http://schemas.fontawesome.com/icons/"
+      xmlns:vm="clr-namespace:AirlineProgram.ViewModel"
+      xmlns:cmd="clr-namespace:AirlineProgram.Commands"
+      xmlns:conv="clr-namespace:AirlineProgram.Resources.Converter"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="900"
+      Title="Купить билет">
+
+    <Page.DataContext>
+        <vm:ViewModelBuyTickets/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <conv:MultiplyValueConvert x:Key="convert"/>
+        <cmd:CommandBuyTicket x:Key="buyTicket"/>
+    </Page.Resources>
+
+    <Grid Background="#FF4DBEF9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="575*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding ElementName=page, Path=Title}"
+                   VerticalAlignment="Center" Margin="40,0"
+                   FontSize="18" FontFamily="Arial Black" Foreground="WhiteSmoke"/>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <TextBlock Text="Найти:" VerticalAlignment="Center"
+                       FontSize="16" FontFamily="Arial" Foreground="WhiteSmoke"/>
+            <TextBox x:Name="tbSearch"
+                     Width="250" Height="25" VerticalAlignment="Center" Margin="20,0"
+                     TextChanged="tbSearch_TextChanged"/>
+        </StackPanel>
+
+        <ListView x:Name="lvTicket"
+                  Grid.Row="1"
+                  ItemsSource="{Binding FlightsCollection}"
+                  SelectedItem="{Binding SelectedFlight}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                            <Button x:Name="btnBuy"
+                                    Content="{Binding Price}" ContentStringFormat="Купить за {0} Р"
+                                    Width="150" Height="25"
+                                    Command="{StaticResource buyTicket}">
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource convert}">
+                                        <Binding ElementName="tbFlightName" Path="Text"/>
+                                        <Binding ElementName="btnBuy" Path="Content"/>
+                                        <Binding ElementName="lvTicket" Path="SelectedItem"/>
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+                            <TextBlock Text="{Binding Airplanes.Airplane_name, StringFormat=на {0}}"/>
+                            </StackPanel>
+
+                        <Grid Margin="10,0" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Top">
+                                <fa:FontAwesome Icon="Solid_Plane" Height="13"/>
+                                <TextBlock Text="{Binding Airlines.Airline_name}"/>
+                                <TextBlock x:Name="tbFlightName"
+                                           Text="{Binding Flight_name}" Margin="15,0"/>
+                            </StackPanel>
+
+                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="0,25,0,20">
+                                <TextBlock Text="{Binding Departure_dateTime, StringFormat=F, ConverterCulture=ru}"/>
+                                <Rectangle Width="80" Height="5" Fill="Gray" Margin="10,0"/>
+                                <TextBlock Text="{Binding Arrival_dateTime, StringFormat=F, ConverterCulture=ru}"/>
+                            </StackPanel>
+
+                            <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="Solid_Chair" Height="13"/>
+                                <TextBlock Text="{Binding Place, StringFormat=Место: {0}}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

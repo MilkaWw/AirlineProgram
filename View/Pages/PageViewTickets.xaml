@@ -1,0 +1,60 @@
+﻿<Page x:Name="page"
+      x:Class="AirlineProgram.View.Pages.PageViewTickets"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="clr-namespace:AirlineProgram.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="900"
+      Title="Просмотреть билеты">
+
+    <Page.DataContext>
+        <vm:ViewModelPageViewTickets/>
+    </Page.DataContext>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="500*"/>
+            <RowDefinition Height="75*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#FF4DBEF9">
+            <TextBlock Text="{Binding ElementName=page, Path=Title}"
+                       VerticalAlignment="Center" Margin="20,0"
+                     FontSize="18" FontFamily="Arial Black" Foreground="WhiteSmoke"/>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Найти:" VerticalAlignment="Center"
+                            FontSize="16" FontFamily="Arial" Foreground="WhiteSmoke"/>
+                <TextBox x:Name="tbSearch"
+                         Width="250" Height="25" VerticalAlignment="Center" Margin="20,0"
+                         TextChanged="tbSearch_TextChanged"/>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid x:Name="dgInfoTickets" Grid.Row="1"
+                  ItemsSource="{Binding CollectonPassengerTickets}"
+                  SelectedItem="{Binding SelectedTickets}"
+                  AutoGenerateColumns="False" Margin="20,0"
+                  ColumnWidth="*" IsReadOnly="True" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название рейса" Binding="{Binding Flights.Flight_name}"/>
+                <DataGridTextColumn Header="Название самолета:" Binding="{Binding Flights.Airplanes.Airplane_name}"/>
+                <DataGridTextColumn Header="Дата вылета:" Binding="{Binding Flights.Departure_dateTime, StringFormat=F,  ConverterCulture=ru}"/>
+                <DataGridTextColumn Header="Дата прилета:" Binding="{Binding Flights.Arrival_dateTime, StringFormat=F,  ConverterCulture=ru}"/>
+                <DataGridTextColumn Header="Место:" Binding="{Binding Flights.Place}" Width="60"/>
+                <DataGridTextColumn Header="Цена билета:" Binding="{Binding Flights.Price, StringFormat='{}{0} руб'}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2"
+                Content="Показать билет" 
+                Width="150" Height="25"
+                VerticalAlignment="Center" 
+                Command="{Binding ClickBtnTicketViewCommand}"
+                CommandParameter="{Binding ElementName=dgInfoTickets, Path=SelectedItem}"/>
+    </Grid>
+</Page>
