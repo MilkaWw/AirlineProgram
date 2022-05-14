@@ -16,54 +16,51 @@
         <cmd:CommandSetingsPassenger x:Key="commandClick"/>
     </Page.Resources>
 
-    <Grid Background="White">
+    <Grid Background="CornflowerBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="75*"/>
             <RowDefinition Height="575*"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="#FF4DBEF9">
+        <Grid Background="#FF000CFF">
             <TextBlock Text="{Binding ElementName=page, Path=Title}"
                        VerticalAlignment="Center" Margin="20,0"
                        FontSize="18" FontFamily="Arial Black" Foreground="WhiteSmoke"/>
         </Grid>
 
         <StackPanel Grid.Row="1" VerticalAlignment="top" HorizontalAlignment="Left"
-                    Margin="270,100">
-            
-        
-            <fa:ImageAwesome Icon="Solid_PeopleArrows" Height="60" Margin="0,20"/>
-            <TextBlock Text="Фамилия:" HorizontalAlignment="Center"/>
+                    Margin="28,109,0,0" Height="276" Width="396">
+            <fa:ImageAwesome Icon="Solid_PeopleArrows" Height="60" Margin="0,20,186,20"/>
+            <TextBlock HorizontalAlignment="Center"><Run FontSize="20" Text="Фамилия:"/></TextBlock>
             <TextBox x:Name="tbSurname"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,5,-250,5"
                      HorizontalContentAlignment="Center"/>
-            <TextBlock Text="Имя:" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center"><Run FontSize="20" Text="Имя:"/></TextBlock>
             <TextBox x:Name="tbName"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,5,-250,5"
                      HorizontalContentAlignment="Center"/>
-            <TextBlock Text="Отчество:" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center"><Run FontSize="20" Text="Отчество:"/></TextBlock>
             <TextBox  x:Name="tbLastName"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,5,-250,5"
                      HorizontalContentAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" VerticalAlignment="top" HorizontalAlignment="Right"
-                    Margin="270,130">
-            <fa:ImageAwesome Icon="Solid_Passport" Height="60" Margin="0,20"/>
-            <TextBlock Text="Серия/номер паспорта:" HorizontalAlignment="Center"/>
+                    Margin="0,109,79,0" Height="267" Width="397">
+            <fa:ImageAwesome Icon="Solid_Passport" Height="60" Margin="160,20,159,20" Width="78"/>
+            <TextBlock Text="Серия/номер паспорта:" HorizontalAlignment="Center" FontSize="20"/>
             <TextBox x:Name="tbPassport" MaxLength="11"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,5,-250,5"
                      HorizontalContentAlignment="Center"/>
-            <TextBlock Text="Номер.Visa:" HorizontalAlignment="Center"/>
+            <TextBlock Text="Номер.Visa:" HorizontalAlignment="Center" FontSize="20"/>
             <TextBox x:Name="tbVisa" MaxLength="9"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,5,-250,5"
                      HorizontalContentAlignment="Center"/>
         </StackPanel>
 
         <Button Grid.Row="1" 
-                Content="Изменить данные" 
-                Width="150" Height="25"
-                VerticalAlignment="Bottom" Margin="0,150" 
+                Content="Изменить данные" Height="28"
+                VerticalAlignment="Bottom" Margin="376,0,365,55" 
                 Command="{StaticResource commandClick}">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource convert}">

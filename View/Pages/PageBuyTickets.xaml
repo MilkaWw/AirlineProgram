@@ -21,7 +21,7 @@
         <cmd:CommandBuyTicket x:Key="buyTicket"/>
     </Page.Resources>
 
-    <Grid Background="#FF4DBEF9">
+    <Grid Background="#FF0C00FF">
         <Grid.RowDefinitions>
             <RowDefinition Height="75*"/>
             <RowDefinition Height="575*"/>
@@ -52,7 +52,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="0">
                             <Button x:Name="btnBuy"
                                     Content="{Binding Price}" ContentStringFormat="Купить за {0} Р"
                                     Width="150" Height="25"
@@ -66,7 +66,7 @@
                                 </Button.CommandParameter>
                             </Button>
                             <TextBlock Text="{Binding Airplanes.Airplane_name, StringFormat=на {0}}"/>
-                            </StackPanel>
+                        </StackPanel>
 
                         <Grid Margin="10,0" Grid.Column="1">
                             <StackPanel Orientation="Horizontal"

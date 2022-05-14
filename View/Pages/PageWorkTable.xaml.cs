@@ -40,5 +40,10 @@ namespace AirlineProgram.View.Pages
                 dataGrid2.ItemsSource = ViewModelWorkTable.CollectionPassengers; //Первоначальный список
             }
         }
+
+        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

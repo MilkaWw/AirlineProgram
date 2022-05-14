@@ -16,39 +16,39 @@
         <cmd:CommandSetingsAdmincs x:Key="commandClick"/>
     </Page.Resources>
 
-    <Grid Background="White">
+    <Grid Background="CornflowerBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="75*"/>
             <RowDefinition Height="575*"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="#FF4DBEF9">
+        <Grid Background="#FF0017FF">
             <TextBlock Text="{Binding ElementName=page, Path=Title}"
                        VerticalAlignment="Center" Margin="20,0"
                        FontSize="18" FontFamily="Arial Black" Foreground="WhiteSmoke"/>
         </Grid>
 
         <StackPanel Grid.Row="1" VerticalAlignment="top" HorizontalAlignment="Center"
-                    Margin="0,100">
-            <fa:ImageAwesome Icon="Solid_UserCircle" Height="60" Margin="0,20"/>
-            <TextBlock Text="Фамилия:" HorizontalAlignment="Center"/>
+                    Margin="237,112,195,0" Height="320" Width="468">
+            <fa:ImageAwesome Icon="Solid_UserAstronaut" Height="91" Margin="0,20,293,20"/>
+            <TextBlock Text="Фамилия:" HorizontalAlignment="Center" Foreground="Black" Margin="169,0,139,0" FontSize="20" Height="26" Width="117"/>
             <TextBox x:Name="tbSurname"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,10,-250,1"
                      HorizontalContentAlignment="Center"/>
-            <TextBlock Text="Имя:" HorizontalAlignment="Center"/>
+            <TextBlock Text="Имя:" HorizontalAlignment="Center" Foreground="Black" FontSize="20"/>
             <TextBox x:Name="tbName"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,5,-250,1"
                      HorizontalContentAlignment="Center"/>
-            <TextBlock Text="Отчество:" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" Foreground="Black" Margin="190,0"><Run FontSize="20" Text="Отчество"/><Run Text=":"/></TextBlock>
             <TextBox  x:Name="tbLastName"
-                     Width="130" Height="20" Margin="0,5"
+                     Width="130" Height="20" Margin="0,5,-250,1"
                      HorizontalContentAlignment="Center"/>
         </StackPanel>
 
         <Button Grid.Row="1" 
                 Content="Изменить данные" 
                 Width="150" Height="25"
-                VerticalAlignment="Bottom" Margin="0,150" 
+                VerticalAlignment="Bottom" Margin="377,0,373,42" 
                 Command="{StaticResource commandClick}">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource convert}">

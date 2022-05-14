@@ -13,14 +13,14 @@
         <vm:ViewModelPageViewTickets/>
     </Page.DataContext>
 
-    <Grid Background="White">
+    <Grid Background="CornflowerBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="75*"/>
             <RowDefinition Height="500*"/>
             <RowDefinition Height="75*"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="#FF4DBEF9">
+        <Grid Background="Blue">
             <TextBlock Text="{Binding ElementName=page, Path=Title}"
                        VerticalAlignment="Center" Margin="20,0"
                      FontSize="18" FontFamily="Arial Black" Foreground="WhiteSmoke"/>
@@ -38,7 +38,7 @@
         <DataGrid x:Name="dgInfoTickets" Grid.Row="1"
                   ItemsSource="{Binding CollectonPassengerTickets}"
                   SelectedItem="{Binding SelectedTickets}"
-                  AutoGenerateColumns="False" Margin="20,0"
+                  AutoGenerateColumns="False" Margin="10,10,10,154"
                   ColumnWidth="*" IsReadOnly="True" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название рейса" Binding="{Binding Flights.Flight_name}"/>

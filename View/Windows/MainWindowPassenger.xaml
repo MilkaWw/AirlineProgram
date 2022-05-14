@@ -32,67 +32,65 @@
     <Window.DataContext>
         <vm:ViewModelWindowPassenger/>
     </Window.DataContext>
-    
-    <Grid Background="#FF00A8FF">
+
+    <Grid Background="Blue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
             <ColumnDefinition Width="900*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="0,20">
-            <fa:ImageAwesome Icon="Solid_UserCircle" Height="70" Foreground="White"/>
+        <StackPanel Margin="0,0,0,495" Grid.ColumnSpan="2">
             <TextBlock Text="{Binding LoginPassenger}" HorizontalAlignment="Center" 
                        Style="{StaticResource loginUser}" Margin="0,15"/>
         </StackPanel>
-        
+
         <Button Grid.Column="0"
-                Click="Button_Click_BuyTicket">
+                Click="Button_Click_BuyTicket" Margin="10,6,0,594" Height="Auto">
             <StackPanel Orientation="Horizontal">
                 <fa:FontAwesome Icon="Solid_TicketAlt" 
                                 Height="14" Margin="5,0"/>
                 <TextBlock Text="Купить билет" Style="{StaticResource textButton}"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center" FontSize="20"/>
             </StackPanel>
         </Button>
-        
-        <Button Grid.Column="0" Margin="0,100,0,0"
+
+        <Button Grid.Column="1" Margin="10,6,670,594"
                 Click="Button_Click_ViewTicket"
-                Height="45">
+                Height="Auto" Width="Auto">
             <StackPanel Orientation="Horizontal">
                 <fa:FontAwesome Icon="Solid_TicketAlt" 
                                 Height="14" Margin="5,0"/>
                 <TextBlock Text="Просмотреть  билеты" TextWrapping="Wrap"
                            Style="{StaticResource textButton}"
-                           VerticalAlignment="Center" Width="100"/>
+                           VerticalAlignment="Center" Width="162" FontSize="20" Height="55"/>
             </StackPanel>
         </Button>
 
-        <Button Grid.Column="0" Margin="0,440,0,0"
+        <Button Grid.Column="1" Margin="508,6,202,594"
                 Click="Button_Click_Settings"
-                Height="45">
+                Height="Auto">
             <StackPanel Orientation="Horizontal">
                 <fa:FontAwesome Icon="Solid_User" 
                                 Height="14" Margin="5,0"/>
                 <TextBlock Text="Аккаунт" TextWrapping="Wrap"
                            Style="{StaticResource textButton}"
-                           VerticalAlignment="Center" Width="100"/>
+                           VerticalAlignment="Center" Width="100" FontSize="20"/>
             </StackPanel>
         </Button>
-        
-        <Button Grid.Column="0" Margin="0,550,0,0"
+
+        <Button Grid.Column="1" Margin="710,6,0,594"
                 Click="Button_Click_Exit"
-                Height="45">
+                Height="Auto">
             <StackPanel Orientation="Horizontal">
                 <fa:FontAwesome Icon="Solid_DoorOpen" 
                                 Height="14" Margin="5,0"/>
                 <TextBlock Text="Выход" TextWrapping="Wrap"
                            Style="{StaticResource textButton}"
-                           VerticalAlignment="Center" Width="100"/>
+                           VerticalAlignment="Center" Width="100" FontSize="20"/>
             </StackPanel>
         </Button>
 
-        <Frame x:Name="frameNavigPage" Background="White"
-               Grid.Column="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="frameNavigPage" Background="CornflowerBlue" NavigationUIVisibility="Hidden" Margin="0,60,0,0" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
