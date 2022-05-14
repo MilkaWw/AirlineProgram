@@ -11,7 +11,7 @@
       xmlns:fa ="http://schemas.fontawesome.com/icons/"
       mc:Ignorable="d"
       d:DesignHeight="650" d:DesignWidth="900"
-      Title="">
+      Title="iii">
 
     <Page.DataContext>
         <vm:ViewModelWorkTable/>
